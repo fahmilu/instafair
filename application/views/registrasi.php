@@ -18,25 +18,25 @@
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="33%">Nama Pemesan<br/>
-          <input type="text" name="textfield" id="textfield"></td>
+          <input type="text" name="name" id="name" /></td>
           <td>E-mail<br/>
-              <input type="text" name="textfield" id="textfield"></td>
+              <input type="text" name="email" id="email" /></td>
           <td width="33%">Telepon<br/>
-              <input type="text" name="textfield" id="textfield"></td>
+              <input type="text" name="telp" id="telp" /></td>
         </tr>
         <tr>
           <td colspan="2" rowspan="2">Alamat Lengkap<br/>
-            <textarea name="textfield2" rows="4" id="textfield2"></textarea></td>
+            <textarea name="address" rows="4" id="address"></textarea></td>
           <td width="33%">Provinsi<br/>
             <label>
-            <select name="select" id="select">
+            <select name="city" id="city">
               <option selected>Jakarta</option>
             </select>
           </label></td>
         </tr>
         <tr>
           <td width="33%">Kode Pos<br/>
-              <input type="text" name="textfield" id="textfield"></td>
+              <input type="text" name="kodepos" id="kodepos" /></td>
         </tr>
       </table>
       <p></p>
@@ -58,7 +58,7 @@
       <div class="box"><img src="<?php echo base_url();?>assets/images/mandiri.png" style="float:left; margin-right:20px; vertical-align:middle">Bank Mandiri, KCP Jakarta Iskandarsyah.<br>
         a/n PT. Thinksmart Ide Brajendra<br>
         126-00-0757575-5</div>
-      <p align="center"><input name="" type="checkbox" value=""> Saya setuju dengan <a href="#mekanisme" class="login-window">Mekanisme</a> yang berlaku.</p>
+      <p align="center"><input name="agree" type="checkbox" value="1"> Saya setuju dengan <a href="#mekanisme" class="login-window">Mekanisme</a> yang berlaku.</p>
       <div class="btn">Submit</div>
     </div>
     <div class="right" id="content-right">

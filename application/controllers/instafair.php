@@ -10,10 +10,16 @@ class Instafair extends CI_Controller {
 
 	function index(){
 
-		$this->load->model('fizzlebizzle');
 		$result = $this->model_instafair->get_user();
+		// print_r($result);
 
-		if ($result['is_true']) {
+		// if(isset($_GET['code'])){
+		// 	echo "<script>";
+		// 	echo "window.location = \"".$this->facebook->getLoginURL($this->config->item('facebook_login_parameters'))."\";";
+		// 	echo "</script>";
+		// }
+
+		if ($this->facebook->getUser()) {
 
 			$this->session->set_userdata(array('facebook_uid' => $result['facebook_uid'], 'is_logged_in' => TRUE));
 
@@ -71,6 +77,7 @@ class Instafair extends CI_Controller {
 			
 
 		} else {
+
 			$this->load->view('header');
 			$this->load->view('home');
 			$this->load->view('footer');

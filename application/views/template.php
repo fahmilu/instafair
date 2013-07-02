@@ -1,4 +1,4 @@
-<?php $this->load->view('includes/header_view'); ?>
+<?php //$this->load->view('includes/header_view'); ?>
 
 
 		<div id=content>
@@ -17,4 +17,4 @@
 
 		</div>
 
-<?php $this->load->view('includes/footer_view'); ?>
+<?php //$this->load->view('includes/footer_view'); ?>
