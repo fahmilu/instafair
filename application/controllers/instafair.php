@@ -144,7 +144,7 @@ class Instafair extends CI_Controller {
 
 		if(!$result['is_true']) redirect('instafair');
 
-		$uid = $this->session->userdata('facebook_uid');
+		$data['fbuid'] = $uid = $this->session->userdata('facebook_uid');
 
 		$dt = $this->model_instafair->check_fbuser($uid);
 
@@ -155,12 +155,12 @@ class Instafair extends CI_Controller {
 		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 2) redirect('instafair/invite');
 
 		$this->load->view('header');
-		$this->load->view('registrasi');
+		$this->load->view('registrasi', $data);
 		$this->load->view('footer');
 		
 	}
 
-	function submitorderpage(){
+	function submitorder(){
 		if($this->model_instafair->submit_order()){
 			//pushtowall
 			redirect('instafair/confirmation');

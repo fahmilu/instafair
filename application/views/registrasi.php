@@ -1,3 +1,53 @@
+<script type="text/javascript">
+$(document).ready(function() {
+  $('.btn').click(function(){
+    $("#registrasi").submit();
+  });
+
+  $("#registrasi").validate({
+    rules: {
+      name: "required",
+      telp: "required",
+      address: "required",
+      email: {
+        required: true,
+        email: true
+      },
+      kodepos: "required",
+      agree: "required",
+    },
+    messages: {
+      name: "Harap isi Nama anda",
+      telp: "Harap isi Telepon Anda",
+      email: "Harap Isi Email Anda",
+      address: "Harap Isi Alamat Lengkap Anda",
+      agree: "Harap isi persetujuan"
+    },
+    submitHandler: function(form) {
+      var r=confirm("Anda yakin data yang anda masukkan sudah benar?");
+      if (r==true)
+        {
+        // $(form).submit();
+        return TRUE;
+        }
+      else
+        {
+        return FALSE;
+        }      
+    }
+  });
+
+});
+</script>
+<style>
+
+ #agreement label.error{
+  position: absolute;
+  bottom: 286px;
+  left: 179px;
+ }
+
+</style>
 <div id="main-wrap">
   <div id="menu">
     <ul>
@@ -9,7 +59,7 @@
     </ul>
   </div>
   <div id="content">
-    <form action="<?php echo site_url('instafair/submitorder'); ?>" method="post">
+    <form action="<?php echo site_url('instafair/submitorder'); ?>" method="post" id="registrasi">
     <div class="left" id="content-left">
       <h1>Pemesanan</h1>
       <p>Isi data dirimu dengan lengkap dan jelas.</p>
@@ -58,8 +108,10 @@
       <div class="box"><img src="<?php echo base_url();?>assets/images/mandiri.png" style="float:left; margin-right:20px; vertical-align:middle">Bank Mandiri, KCP Jakarta Iskandarsyah.<br>
         a/n PT. Thinksmart Ide Brajendra<br>
         126-00-0757575-5</div>
-      <p align="center"><input name="agree" type="checkbox" value="1"> Saya setuju dengan <a href="#mekanisme" class="login-window">Mekanisme</a> yang berlaku.</p>
-      <div class="btn">Submit</div>
+      <p align="center" id="agreement"><input name="agree" id="agree" type="checkbox" value="1"> Saya setuju dengan <a href="#mekanisme" class="login-window">Mekanisme</a> yang berlaku.</p>
+      <input type="hidden" name="fbuid" value="<?php echo $fbuid; ?>">
+      <div class="btn" style="cursor:pointer">Submit</div>
+
     </div>
     <div class="right" id="content-right">
   <div id="submenu">

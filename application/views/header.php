@@ -4,10 +4,12 @@
 <title>Vaseline Instant Fair</title>
 <meta charset="UTF-8"/>
 <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/reset.css" /> -->
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/validate/screen.css" />
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/css/style.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Alegreya">
 <!-- Counter -->
 <script src="<?php echo base_url();?>assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.validate.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.json-2.4.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.easing.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/jquery.flipCounter.1.2.pack.js" type="text/javascript"></script>
