@@ -67,11 +67,11 @@ class Instafair extends CI_Controller {
 
 				redirect('instafair/orderpage');
 			
-			}else if($this->model_instafair->check_order_konfirmasi_status($uid) == 0){
-				redirect('instafair/confirmation');
 			}else if($this->model_instafair->check_order_konfirmasi_status($uid) == 1){
-				redirect('instafair/confirmation2');
+				redirect('instafair/confirmation');
 			}else if($this->model_instafair->check_order_konfirmasi_status($uid) == 2){
+				redirect('instafair/waitingapproval');
+			}else if($this->model_instafair->check_order_konfirmasi_status($uid) == 3){
 				redirect('instafair/invite');
 			}
 			
@@ -122,7 +122,10 @@ class Instafair extends CI_Controller {
 
 		$dt = $this->model_instafair->check_fbuser($uid);
 
-		if($dt == 0) redirect('instafair');
+		if($dt == 0) { redirect('instafair');}
+		else if(!$this->model_instafair->check_order_status($uid)){ redirect('instafair/orderpage'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 1){ redirect('instafair/confirmation'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 2){ redirect('instafair/waitingapproval'); }
 
 		$this->load->view('header');
 		$this->load->view('invite');
@@ -146,13 +149,15 @@ class Instafair extends CI_Controller {
 
 		$data['fbuid'] = $uid = $this->session->userdata('facebook_uid');
 
+		if(!$data['fbuid']) redirect('instafair');
+
 		$dt = $this->model_instafair->check_fbuser($uid);
 
 		if($dt == 0) redirect('instafair');
 		else if(!$this->model_instafair->check_invite_status($uid)) redirect('instafair/invite');
-		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 0) redirect('instafair/confirmation');
-		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 1) redirect('instafair/confirmation2');
-		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 2) redirect('instafair/invite');
+		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 1) redirect('instafair/confirmation');
+		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 2) redirect('instafair/waitingapproval');
+		else if($this->model_instafair->check_order_status($uid) and $this->model_instafair->check_order_konfirmasi_status($uid) == 3) redirect('instafair/invite');
 
 		$this->load->view('header');
 		$this->load->view('registrasi', $data);
@@ -163,18 +168,110 @@ class Instafair extends CI_Controller {
 	function submitorder(){
 		if($this->model_instafair->submit_order()){
 			//pushtowall
-			redirect('instafair/confirmation');
+			echo site_url('instafair/confirmation');
 		}else{
-			redirect('instafair/orderpage');
+			echo site_url('instafair/orderpage');
 		}
 	}
 
 	function confirmation(){
+		$result = $this->model_instafair->get_user();
+
+		if(!$result['is_true']) redirect('instafair');
+
+		$uid = $this->session->userdata('facebook_uid');
+
+		$dt = $this->model_instafair->check_fbuser($uid);
+
+		if($dt == 0) { redirect('instafair');}
+		else if(!$this->model_instafair->check_invite_status($uid)){ redirect('instafair/invite'); }
+		else if(!$this->model_instafair->check_order_status($uid)){ redirect('instafair/orderpage'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 3){ redirect('instafair/invite'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 2){ redirect('instafair/waitingapproval'); }
+
+		$data['order'] = $this->model_instafair->get_orders($uid);
+
+		$orderdate = $enddate = $data['order']->date_order;
+
+		$orderdate = $enddate = strtotime($enddate);
+		$enddate = strtotime("+7 day", $enddate);
+		$data['enddate'] = date('d/m/Y', $enddate);
+
+		$data['orderdate'] = date('d/m/Y', $orderdate);
+
 		$this->load->view('header');
-		$this->load->view('konfirmasi');
+		$this->load->view('konfirmasi', $data);
 		$this->load->view('footer');
 	}
 
+	function submitconfirm(){
+		if($this->model_instafair->submit_confirm()){
+			//pushtowall
+			redirect('instafair/waitingapproval');
+		}else{
+			redirect('instafair/confirmation');
+		}
+	}
+
+	function orderdetail($id){
+		$result = $this->model_instafair->get_user();
+
+		if(!$result['is_true']) redirect('instafair');
+
+		$uid = $this->session->userdata('facebook_uid');
+
+		$dt = $this->model_instafair->check_fbuser($uid);
+
+		if($dt == 0) { redirect('instafair');}
+		else if(!$this->model_instafair->check_invite_status($uid)){ redirect('instafair/invite'); }
+		else if(!$this->model_instafair->check_order_status($uid)){ redirect('instafair/orderpage'); }
+
+		$data['order'] = $this->model_instafair->get_orders($uid);
+
+		$orderdate = $enddate = $data['order']->date_order;
+
+		$orderdate = $enddate = strtotime($enddate);
+		$enddate = strtotime("+7 day", $enddate);
+		$data['enddate'] = date('d/m/Y', $enddate);
+
+		$data['orderdate'] = date('d/m/Y', $orderdate);
+
+		$this->load->view('header');
+		$this->load->view('orderdetail', $data);
+		$this->load->view('footer');
+	}
+
+	function waitingapproval(){
+		$result = $this->model_instafair->get_user();
+
+		if(!$result['is_true']) redirect('instafair');
+
+		$uid = $this->session->userdata('facebook_uid');
+
+		$dt = $this->model_instafair->check_fbuser($uid);
+
+		if($dt == 0) { redirect('instafair');}
+		else if(!$this->model_instafair->check_invite_status($uid)){ redirect('instafair/invite'); }
+		else if(!$this->model_instafair->check_order_status($uid)){ redirect('instafair/orderpage'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 3){ redirect('instafair/invite'); }
+		else if($this->model_instafair->check_order_konfirmasi_status($uid) == 1){ redirect('instafair/confirmation'); }
+
+		$data['order'] = $this->model_instafair->get_orders($uid);
+
+		$orderdate = $enddate = $data['order']->date_order;
+
+		$orderdate = $enddate = strtotime($enddate);
+		$enddate = strtotime("+7 day", $enddate);
+		$data['enddate'] = date('d/m/Y', $enddate);
+
+		$data['orderdate'] = date('d/m/Y', $orderdate);
+
+		$data['confirm_status'] = $this->model_instafair->get_confirm_status($data['order']->id);
+
+		$this->load->view('header');
+		$this->load->view('waitingapproval', $data);
+		$this->load->view('footer');
+	}
 	function logout() {
 		$this->fbauth->logout();
 	}

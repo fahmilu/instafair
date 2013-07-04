@@ -1,3 +1,22 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('#confirm_btn').click(function(){
+      $("#confirm").submit();
+    });
+
+    $("#confirm").validate({
+      rules: {
+        no_rek: "required",
+        name_no_rek: "required",
+      },
+      messages: {
+        no_rek: "Harap isi Nomor Rekening",
+        name_no_rek: "Harap isi Nama Pemilik Nomor Rekening"
+      }
+    });
+
+  });
+</script>
 <div id="main-wrap">
   <div id="menu">
     <ul>
@@ -18,7 +37,7 @@
     <div class="clear"></div>
   </div>
   <h2 style="float:left; width:50%; margin-bottom:5px">Tagihan Anda</h2>
-  <div class="right" style="width:50%"><a href="#" style="text-decoration:none; font-size:12px"><img src="<?php echo base_url();?>assets/images/arrow.png"> LIHAT SELENGKAPNYA</a></div>
+  <div class="right" style="width:50%"><a href="<?php echo site_url('instafair/orderdetail/'.$order->id); ?>" style="text-decoration:none; font-size:12px"><img src="<?php echo base_url();?>assets/images/arrow.png"> LIHAT SELENGKAPNYA</a></div>
   <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tab">
     <tr class="header">
       <th>Tanggal Tagihan</th>
@@ -27,31 +46,45 @@
       <th>Status</th>
     </tr>
     <tr>
-      <td class="borderR">01/06/2013</td>
-      <td class="borderR">01/06/2013</td>
+      <td class="borderR"><?php echo $orderdate; ?></td>
+      <td class="borderR"><?php echo $enddate; ?></td>
       <td class="borderR">Rp 10.000</td>
-      <td>Belum dibayar</td>
+      <td>
+        <?php
+          if($order->order_status == 1){
+            echo "Belum Dibayar";
+          }else if($order->order_status == 2){
+            echo "Menunggu Approval";
+          }else if($order->order_status == 3){
+            echo "Sudah Dibayar";
+          }
+        ?>
+      </td>
     </tr>
   </table>
   <h2>Konfirmasi Pembayaran</h2>
   <p>Jika sudah membayar, silahkan isi konfirmasi pembayaran.<br>
   </p>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td>Nomor Rekening</td>
-      <td width="5%" align="center">:</td>
-      <td><label>
-        <input type="text" name="textfield" id="textfield">
-      </label></td>
-    </tr>
-    <tr>
-      <td>Nama Pemilik Nomor Rekening</td>
-      <td width="5%" align="center">:</td>
-      <td><input type="text" name="textfield2" id="textfield2"></td>
-    </tr>
-  </table>
-  <p align="center">Jika sudah membayar, silahkan isi konfirmasi pembayaran.</p>
-  <div class="btn">Konfirmasi Pembayaran</div>
+  <form method="post" action="<?php echo site_url('instafair/submitconfirm'); ?>" id="confirm">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td>Nomor Rekening</td>
+        <td width="5%" align="center">:</td>
+        <td><label>
+          <input type="text" name="no_rek" id="no_rek">
+        </label></td>
+      </tr>
+      <tr>
+        <td>Nama Pemilik Nomor Rekening</td>
+        <td width="5%" align="center">:</td>
+        <td><input type="text" name="name_no_rek" id="name_no_rek"></td>
+      </tr>
+    </table>
+    <input type="hidden" name="order_id" value="<?php echo $order->id; ?>" />
+    <input type="hidden" name="name" value="<?php echo $order->fullname; ?>" />
+    <p align="center">Jika sudah membayar, silahkan isi konfirmasi pembayaran.</p>
+    <div class="btn" id="confirm_btn" style="cursor:pointer;">Konfirmasi Pembayaran</div>
+  </form>
 </div>
 <div class="right" id="content-right">
   <div id="submenu">

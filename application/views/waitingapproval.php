@@ -20,12 +20,22 @@
           <th>Total Biaya</th>
           <th>Status</th>
         </tr>
-        <tr>
-          <td class="borderR">01/06/2013</td>
-          <td class="borderR">01/06/2013</td>
-          <td class="borderR">Rp 10.000</td>
-          <td>Belum dibayar</td>
-        </tr>
+    <tr>
+      <td class="borderR"><?php echo $orderdate; ?></td>
+      <td class="borderR"><?php echo $enddate; ?></td>
+      <td class="borderR">Rp 10.000</td>
+      <td>
+        <?php
+          if($order->order_status == 1){
+            echo "Belum Dibayar";
+          }else if($order->order_status == 2){
+            echo "Menunggu Approval";
+          }else if($confirm_status == 3){
+            echo "Sudah Dibayar";
+          }
+        ?>
+      </td>
+    </tr>
       </table>
       <div class="box"><img src="<?php echo base_url();?>assets/images/check.png" style="float:left; margin-right:20px; margin-left:75px; vertical-align:middle"><span style="font-size:16px"> Terima kasih telah membeli produk Vaseline</span><br>
         Produk yang telah dibeli akan dikirimkan 7 hari dari sekarang.</div>

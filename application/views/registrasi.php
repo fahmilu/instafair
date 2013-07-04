@@ -20,15 +20,25 @@ $(document).ready(function() {
       name: "Harap isi Nama anda",
       telp: "Harap isi Telepon Anda",
       email: "Harap Isi Email Anda",
-      address: "Harap Isi Alamat Lengkap Anda",
+      kodepos: "Harap Isi Kode Pos Anda",
+      address: "Harap Isi Alamat Lengkap Anda untuk Pengiriman Barang",
       agree: "Harap isi persetujuan"
     },
     submitHandler: function(form) {
       var r=confirm("Anda yakin data yang anda masukkan sudah benar?");
       if (r==true)
         {
-        // $(form).submit();
-        return TRUE;
+          var serializedData = $('#registrasi').serialize();
+          //alert (dataString);return false;
+          $.ajax({
+            type: "POST",
+            url: "<?php echo site_url('instafair/submitorder'); ?>",
+            data: serializedData,
+            success: function(msg) {
+              window.location = msg;
+            }
+          });
+          return false;
         }
       else
         {

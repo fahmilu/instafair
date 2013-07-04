@@ -347,4 +347,71 @@ class Model_instafair extends CI_Model {
 		return $r->order_status;
 	}
 
+	function submit_order(){
+		$data['facebook_id'] = $this->input->post('fbuid');
+		if(!$this->check_order_status($data['facebook_id'])){
+			$data['order_item_code'] = '1';
+			$data['order_price'] = 10000;
+			$data['fullname'] = $this->input->post('name');
+			$data['address'] = $this->input->post('address');
+			$data['email'] = $this->input->post('email');
+			$data['phone_number'] = $this->input->post('telp');
+			$data['zip_code'] = $this->input->post('kodepos');
+			$data['order_status'] = 1;
+			$data['agreement'] = 1;
+			$data['order_created'] = date('Y-m-d H:i:s');
+
+			if($this->db->insert('orders', $data)){
+				$this->db->where('facebook_id', $data['facebook_id']);
+				$this->db->update('insta_user', array('status_order'=>1));
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+		}else{
+			return TRUE;
+		}
+	}
+
+	function get_orders($fbuid){
+		$this->db->select("*, date(order_created) as date_order");
+		$th = $this->db->get_where('orders', array('facebook_id'=>$fbuid));
+
+		return $th->row();
+		// exit();
+
+	}
+
+	function submit_confirm(){
+		$data['order_id'] = $this->input->post('order_id');
+		$data['name'] = $this->input->post('name');
+		$data['no_rek'] = $this->input->post('no_rek');
+		$data['name_no_rek'] = $this->input->post('name_no_rek');
+		$data['confirm_status'] = 1;
+		$data['confirm_date'] = date('Y-m-d H:i:s');
+		if($this->db->insert('confirms', $data)){
+
+			$this->db->where('id', $data['order_id']);
+			$this->db->update('orders', array('order_status'=>2));
+			return true;
+
+		}else{
+
+			return false;
+
+		}
+	}
+
+	function get_confirm_status($order_id){
+		$th = $this->db->get_where('confirms', array('order_id'=>$order_id));
+		$dt = $th->row();
+		if($dt->confirm_status == 2){
+
+			$this->db->where('id', $data['order_id']);
+			$this->update('orders', array('order_status'=>3));
+
+		}
+
+		return $dt->confirm_status;
+	}
 }

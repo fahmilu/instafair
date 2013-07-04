@@ -12,38 +12,38 @@
     <div class="left" id="content-left">
       <h1>Konfirmasi</h1>
       <p>Data dirimu sudah tersimpan. Mohon segera melakukan pembayaran.</p>
-      <p><a href="#"><img src="<?php echo base_url();?>assets/images/btBack.png" width="69" height="20"></a></p>
+      <p><a href="<?php echo site_url('instafair/confirmation'); ?>"><img src="<?php echo base_url();?>assets/images/btBack.png" width="69" height="20"></a></p>
       <h2>Data Pemesan</h2>
       <table width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>Nama Pemesan</td>
           <td width="5%" align="center">:</td>
-          <td>Cindy Marvella</td>
+          <td><?php echo $order->fullname; ?></td>
         </tr>
         <tr>
           <td>E-mail</td>
           <td width="5%" align="center">:</td>
-          <td>cindy_marvella@ymail.com</td>
+          <td><?php echo $order->email; ?></td>
         </tr>
         <tr>
           <td>Telepon</td>
           <td width="5%" align="center">:</td>
-          <td>0823462364</td>
+          <td><?php echo $order->phone_number; ?></td>
         </tr>
         <tr>
           <td>Alamat Lengkap</td>
           <td width="5%" align="center">:</td>
-          <td>Taman Ratu Blok G 2/4, Jl. KebonJeruk III, Kel. Selatan RT 03/002</td>
+          <td><?php echo $order->address; ?></td>
         </tr>
         <tr>
           <td>Provinsi</td>
           <td width="5%" align="center">:</td>
-          <td>DKI Jakarta</td>
+          <td><?php echo $order->provinsi; ?></td>
         </tr>
         <tr>
           <td>Kode Pos</td>
           <td width="5%" align="center">:</td>
-          <td>12430</td>
+          <td><?php echo $order->zip_code; ?></td>
         </tr>
       </table>
       <p></p>
@@ -66,7 +66,7 @@
         a/n PT. Thinksmart Ide Brajendra<br>
         126-00-0757575-5</div>
       <p align="center">Jika sudah membayar, silahkan isi konfirmasi pembayaran.</p>
-      <div class="btn">Konfirmasi Pembayaran</div>
+      <a href="<?php echo site_url('instafair/confirmation'); ?>"><div class="btn">Konfirmasi Pembayaran</div></a>
     </div>
     <div class="right" id="content-right">
   <div id="submenu">
