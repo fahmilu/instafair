@@ -407,8 +407,8 @@ class Model_instafair extends CI_Model {
 		$dt = $th->row();
 		if($dt->confirm_status == 2){
 
-			$this->db->where('id', $data['order_id']);
-			$this->update('orders', array('order_status'=>3));
+			$this->db->where('id', $order_id);
+			$this->db->update('orders', array('order_status'=>3));
 
 		}
 

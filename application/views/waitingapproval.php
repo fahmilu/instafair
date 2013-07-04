@@ -28,9 +28,9 @@
         <?php
           if($order->order_status == 1){
             echo "Belum Dibayar";
-          }else if($order->order_status == 2){
+          }else if($order->order_status == 2 && $confirm_status == 1){
             echo "Menunggu Approval";
-          }else if($confirm_status == 3){
+          }else if($confirm_status == 2){
             echo "Sudah Dibayar";
           }
         ?>
