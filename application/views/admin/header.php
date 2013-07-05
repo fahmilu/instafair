@@ -170,7 +170,7 @@
 					<li><a href="<?php echo site_url('admin/change_password'); ?>">Change Password</a></li>				
 					<li><a href="<?php echo site_url('auth/logout'); ?>">Log Out</a></li>				
 				</ul>	
-					<h2 class="clear"><strong>Integrity Admin</strong></h2>
+					<h2 class="clear"><strong>Instafair Admin</strong></h2>
 					<h3>Logged in as: <strong><?php echo $this->session->userdata('username'); ?></strong></h3>
 			</div>
 
@@ -179,12 +179,9 @@
 		<div id="navigation">
 			<ul id="menubar">
 					<li><a href="<?php echo site_url('/admin/dashboard'); ?>">Control Panel</a>
-					<li><a href="<?php echo site_url('/admin/about'); ?>">About Us</a>
-					<li><a href="<?php echo site_url('/admin/pre_employee'); ?>">Pre-Employee Integrity</a>
-					<li><a href="<?php echo site_url('/admin/vendor'); ?>">Vendor Integrity</a>
-					<li><a href="<?php echo site_url('/admin/know_customer'); ?>">Know Your Customer</a>
-					<li><a href="<?php echo site_url('/admin/background_check'); ?>">Background Checks</a>
-					<li><a href="<?php echo site_url('/admin/fcpa'); ?>">FCPA</a>
+					<li><a href="<?php echo site_url('/admin/user'); ?>">Facebook User Data</a>
+					<li><a href="<?php echo site_url('/admin/order'); ?>">Order Data</a>
+					<li><a href="<?php echo site_url('/admin/confirm'); ?>">Order Confirmation</a>
 			</ul>
 			
 		</div>
