@@ -8,7 +8,7 @@
 		<div class="container">
 
 		
-			<p class="copyright">Powered by &copy;TIKKUTIKKU 2012. All rights reserved. Terms and conditions</p>
+			<p class="copyright">Powered by &copy;DIGIFY 2013. All rights reserved. Terms and conditions</p>
 
 
 		</div>

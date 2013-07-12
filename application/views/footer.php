@@ -1,7 +1,14 @@
   <div id="footer">
     <div class="left">
-      <p id="smo">Join Us <a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/smoTw.png" width="23" height="23"></a> <a href="#" target="_blank"><img src="<?php echo base_url();?>assets/images/smoFb.png" width="23" height="23"></a></p>
-      <a href="#" class="first">Home</a> | <a href="#">Product</a> | <a href="#">Promotions</a> | <a href="#">Prove It Station</a> | <a href="#">My UV Skin Report</a> </div>
+      <p id="smo">Join Us 
+        <a href="https://twitter.com/vaselineID" target="_blank"><img src="<?php echo base_url();?>assets/images/smoTw.png" width="23" height="23"></a> 
+        <a href="https://www.facebook.com/vaseline" target="_blank"><img src="<?php echo base_url();?>assets/images/smoFb.png" width="23" height="23"></a>
+      </p>
+      <a href="http://www.vaselineamazingskin.com/home" class="first">Home</a> | 
+      <a href="http://www.vaselineamazingskin.com/products/detail/201">Product</a> | 
+      <a href="http://www.vaselineamazingskin.com/promo">Promotions</a> | 
+      <a href="http://www.vaselineamazingskin.com/myuvskinreport">Skin Expert</a> | 
+      <a href="http://www.vaselineamazingskin.com/instafair/">Instafair</a> </div>
     <div class="right"><img src="<?php echo base_url();?>assets/images/footerLogo.jpg"><br/>
       &copy; 2013 PT Unilever Indonesia. All rights reserved.<br/>
       This website is directed only to Indonesia customers for products and services of Unilever Indonesia.</div>

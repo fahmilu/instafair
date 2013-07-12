@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<title>tikkutikku.com</title>
+	<title>InstaFair</title>
 	
 	<link rel="shortcut icon" href="images/favicon.ico">
 	<!--<link href="assets/css/styles.css" type="text/css" media="all" rel="stylesheet" />-->

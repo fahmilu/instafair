@@ -304,7 +304,8 @@ class Model_instafair extends CI_Model {
 				$status_invite = $dta->row()->status_invite;
 				if($status_invite > 0){
 					$this->db->where('facebook_id', $fbuid);
-					if($this->db->update('insta_user', array('status_invite'=> ($status_invite - 1)))){
+					// if($this->db->update('insta_user', array('status_invite'=> ($status_invite - 1)))){
+					if($this->db->update('insta_user', array('status_invite'=> 0))){
 						return TRUE;
 					}
 				}

@@ -35,7 +35,7 @@ $captcha = array(
 );
 ?>
 <?php echo form_open($this->uri->uri_string()); ?>
-<div id="atas"><div class="content"><img src="<?php echo base_url();?>assets/images/integrity_logo.png" class="logo" /></div></div>
+<div id="atas"><div class="content"></div></div>
 <div id="login-page">
 	<table>
 		<tr><td><?php echo form_label($login_label, $login['id']); ?></td></tr>
@@ -95,7 +95,7 @@ $captcha = array(
 			
 		</tr>
 	</table>
-	<input type="image" src="<?php echo base_url('assets/images/signin.png');?>" style="position: absolute;bottom: 13px;right: 26px;" />
+	<input type="image" src="<?php echo base_url('assets/images/login_button1.jpg');?>" style="width: 117px;position: absolute;bottom: 13px;right: 26px;" />
 <?php echo form_close(); ?>
 </div>
 

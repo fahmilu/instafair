@@ -18,22 +18,22 @@
   });
 </script>
 <div id="main-wrap">
-  <div id="menu">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Product</a></li>
-      <li><a href="#">Promotions</a></li>
-      <li><a href="#">Prove It Station</a></li>
-      <li><a href="#">My UV Skin Report</a></li>
-    </ul>
-  </div>
+    <div id="menu">
+      <ul>
+        <li><a href="http://www.vaselineamazingskin.com/home">Home</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/products/detail/201">Product</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/promo">Promotions</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/myuvskinreport">Skin Expert</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/instafair">Instafair</a></li>
+      </ul>
+    </div>
   <div id="content">
 <div class="left" id="content-left">
   <h1>Konfirmasi</h1>
   <p>Data dirimu sudah tersimpan. Mohon segera melakukan pembayaran.</p>
   <div class="box2">
     <div class="left" style="width:60%">Gabung di Facebook Fanpage Vaseline untuk mendapatkan tips dan info seputar kulit serta produk Vaseline.</div>
-    <div class="right"><a href="#"><img src="<?php echo base_url();?>assets/images/fbLike.png"></a></div>
+    <div class="right"><a href="https://www.facebook.com/vaseline" target="_blank"><img src="<?php echo base_url();?>assets/images/fbLike.png"></a></div>
     <div class="clear"></div>
   </div>
   <h2 style="float:left; width:50%; margin-bottom:5px">Tagihan Anda</h2>

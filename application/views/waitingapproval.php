@@ -1,18 +1,18 @@
 <div id="main-wrap">
-  <div id="menu">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Product</a></li>
-      <li><a href="#">Promotions</a></li>
-      <li><a href="#">Prove It Station</a></li>
-      <li><a href="#">My UV Skin Report</a></li>
-    </ul>
-  </div>
+    <div id="menu">
+      <ul>
+        <li><a href="http://www.vaselineamazingskin.com/home">Home</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/products/detail/201">Product</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/promo">Promotions</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/myuvskinreport">Skin Expert</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/instafair">Instafair</a></li>
+      </ul>
+    </div>
   <div id="content">
     <div class="left" id="content-left">
       <h1>Terima Kasih Telah Melakukan Pembayaran</h1>
       <h2 style="float:left; width:50%; margin-bottom:5px">Tagihan Anda</h2>
-      <div class="right" style="width:50%"><a href="#" style="text-decoration:none; font-size:12px"><img src="<?php echo base_url();?>assets/images/arrow.png"> LIHAT SELENGKAPNYA</a></div>
+      <div class="right" style="width:50%"><a href="<?php echo site_url('instafair/orderdetail/'.$order->id); ?>" style="text-decoration:none; font-size:12px"><img src="<?php echo base_url();?>assets/images/arrow.png"> LIHAT SELENGKAPNYA</a></div>
       <table width="100%" border="0" cellpadding="0" cellspacing="0" class="tab">
         <tr class="header">
           <th>Tanggal Tagihan</th>

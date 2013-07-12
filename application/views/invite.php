@@ -1,13 +1,13 @@
 <div id="main-wrap">
-  <div id="menu">
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Product</a></li>
-      <li><a href="#">Promotions</a></li>
-      <li><a href="#">Prove It Station</a></li>
-      <li><a href="#">My UV Skin Report</a></li>
-    </ul>
-  </div>
+    <div id="menu">
+      <ul>
+        <li><a href="http://www.vaselineamazingskin.com/home">Home</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/products/detail/201">Product</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/promo">Promotions</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/myuvskinreport">Skin Expert</a></li>
+        <li><a href="http://www.vaselineamazingskin.com/instafair">Instafair</a></li>
+      </ul>
+    </div>
   <div id="content">
     <div class="left" id="content-left">
       <a href="#" onclick="sendRequestToManyRecipients();" id="test">Try Invite</a>
